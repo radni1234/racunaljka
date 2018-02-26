@@ -4,8 +4,42 @@
     Dobro došli u mrežu dobre energije!
   </h1>
   <img class="photo-icon" src="assets/pictures/logo.png">
-
 </div>
+
+  <h2 align="center">Namena zgrade</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <div class="form-check" align="center">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" (click)="onNamenaClick1()" name="optionsRadios1" id="optionsRadios1" value="option1" checked [(ngModel)]="namenaObjekta" [checked]="namenaObjekta === 1">
+          Stambena zgrada
+        </label>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-check" align="center">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" (click)="onNamenaClick2()" name="optionsRadios1" id="optionsRadios2" value="option2" [(ngModel)]="namenaObjekta" [checked]="namenaObjekta === 2">
+          Nestambena zgrada i zgrada mešovite namene
+        </label>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <select *ngIf="namena" class="form-control" align="center" [(ngModel)]="selectedNamena">
+        <option value="1">Upravne i poslovne zgrade</option>
+        <option value="2">Zgrade namenjene obrazovanju i kulturi</option>
+        <option value="3">Zgrade namenjene zdravstvu i socijalnoj zaštiti</option>
+        <option value="4">Zgrade namenjene turizmu i ugostiteljstvu</option>
+        <option value="5">Zgrade namenjene sportu i rekreaciji</option>
+        <option value="6">Zgrade namenjene trgovini i uslužnim delatnostima </option>
+      </select>
+    </div>
+  </div>
+  <br>
+
 <h2 align="center">Tip zgrade</h2>
 
 <div class="row">
@@ -16,13 +50,13 @@
   <div class="col-md-2">
     <div>
       <h5>Unesite grejanu površinu zgrade u m²</h5>
-      <input class="form-control" type="search" id="example-search-input">
+      <input class="form-control" type="number" id="example-search-input" [(ngModel)]="povrsina">
     </div>
   </div>
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" [(ngModel)]="tipObjekta" [checked]="tipObjekta === 1" checked>
         Postojeća zgrada
       </label>
     </div>
@@ -30,7 +64,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" [(ngModel)]="tipObjekta" [checked]="tipObjekta === 2">
         Nova zgrada
       </label>
     </div>
@@ -40,48 +74,16 @@
 </div>
 <br>
 <br>
-<h2 align="center">Namena zgrade</h2>
 
-<div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-3">
-    <div class="form-check" align="center">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios1" id="optionsRadios1" value="option1" checked>
-        Stambena zgrada
-      </label>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="form-check" align="center">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios1" id="optionsRadios2" value="option2">
-        Nestambena zgrada i zgrada mešovite namene
-      </label>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <select class="form-control" align="center">
-      <option>Upravne i poslovne zgrade</option>
-      <option>Zgrade namenjene obrazovanju i kulturi</option>
-      <option>Zgrade namenjene zdravstvu i socijalnoj zaštiti</option>
-      <option>Zgrade namenjene turizmu i ugostiteljstvu</option>
-      <option>Zgrade namenjene sportu i rekreaciji</option>
-      <option>Zgrade namenjene trgovini i uslužnim delatnostima </option>
-    </select>
-  </div>
-</div>
-<br>
-<h2 align="center">Vrsta zgrade</h2>
+<h2 align="center" *ngIf="!namena">Vrsta zgrade</h2>
 
-<div class="row">
+<div class="row" *ngIf="!namena">
   <div class="col-md-3">
   </div>
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="option1" checked>
+        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="option1" checked [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta === 1">
         Sa jednim stanom
       </label>
     </div>
@@ -89,7 +91,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios2" value="option2">
+        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios2" value="option2" [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta === 2">
         Sa više stanova
       </label>
     </div>
@@ -110,67 +112,53 @@
 
   </div>
 </div>
+<div *ngFor="let item of list">
+  <app-energent #cmp></app-energent>
+</div>
 
+
+
+
+<br>
 <div class="row">
-  <div class="col-md-1">
-  </div>
-  <div class="col-md-4">
-    <select class="form-control" align="center">
-      <option>Topla voda [kWh]</option>
-      <option>Električna energija [kWh]</option>
-      <option>Prirodni gas [m3]</option>
-      <option>Sušeni lignit [kg]</option>
-    </select>
+  <div class="col-md-3">
   </div>
   <div class="col-md-3">
-    <div>
-      <input class="form-control" type="search" id="example-search-input">
-    </div>
+    <button type="button" class="btn btn-primary" align="center" (click)="onDodajEnergent()" align="right">Dodaj energent</button>
+  </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-primary" align="center" (click)="onUkloniEnergent()">Ukloni energent</button>
   </div>
 </div>
-
 <br>
+<button type="button" class="btn btn-primary" align="center" (click)="onIzracunaj()">Izracunaj</button>
+Ukupna potrosnja objekta iznosi: {{proizvod}} kWh <br>
+Specificna potrosnja iznosi: {{specPotrosnja | number : '1.0-0'}} kWh/m2*a
+Klasa objekta je: {{klasaString}}
+Vrsta objekta je : {{vrstaObjekta}}
 
 <div class="row">
-  <div class="col-md-1">
-  </div>
-  <div class="col-md-4">
-    <select class="form-control" align="center">
-      <option>Topla voda [kWh]</option>
-      <option>Električna energija [kWh]</option>
-      <option>Prirodni gas [m3]</option>
-      <option>Sušeni lignit [kg]</option>
-    </select>
+  <div class="col-md-2">
   </div>
   <div class="col-md-3">
-    <div>
-      <input class="form-control" type="search" id="example-search-input">
-    </div>
+    <table id="testTable" class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="align-center">Klasa</th>
+        <th class="align-center">Raspon</th>
+        <th class="align-center">Vrednost</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of skalaPasos; let i = index;">
+        <td class="align-center">{{listOfKlasa[i]}}</td>
+        <td class="align-center">{{skalaPasos[i]}} --- {{skalaPasos[i+1]}} </td>
+        <td> <p *ngIf="specPotrosnja > skalaPasos[i] && (skalaPasos[i+1] ? specPotrosnja <= skalaPasos[i+1] : true)">{{specPotrosnja}}</p> </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
-<br>
-<div class="row">
-  <div class="col-md-6">
-  </div>
-  <div class="col-md-6">
-    <button type="button" class="btn btn-primary" align="center">Dodaj energent</button>
-  </div>
-</div>
-<br>
 
-<div class="row">
-  <div class="col-md-6">
-    <label  align="center">Search</label>
-    <div>
-      <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label  align="center">Search</label>
-    <div>
-      <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
-    </div>
-  </div>
 
-</div>

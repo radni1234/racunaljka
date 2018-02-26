@@ -1,0 +1,23 @@
+<div>
+  <div class="row" >
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" align="center" (change)="energentChanged($event.target.value)">
+        <option value="1">Topla voda [kWh]</option>
+        <option value="1">Električna energija [kWh]</option>
+        <option value="9.26">Prirodni gas [m3]</option>
+        <option value="4.5">Sušeni lignit [kg]</option>
+        <option value="11.39">Lož ulje [l]</option>
+        <option value="11">Mazut [l]</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <div>
+        <input class="form-control" type="search" id="example-search-input" [(ngModel)]="kolicina">
+      </div>
+    </div>
+  </div>
+  {{kolicina * energent}}
+  <br>
+</div>
