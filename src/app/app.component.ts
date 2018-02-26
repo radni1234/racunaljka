@@ -20,7 +20,7 @@ export class AppComponent {
   specPotrosnja: number = 0;
   list: Array<number> = [];
   skalaPasos: Array<number> = [];
-  private namena: boolean = false;
+  namena: boolean = false;
   title = 'app';
   @ViewChildren('cmp') components:QueryList<EnergentComponent>;
   prvi: string;
