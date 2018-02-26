@@ -14,7 +14,7 @@
     <div class="col-md-3">
       <div class="form-check" align="center">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" (click)="onNamenaClick1()" name="optionsRadios1" id="optionsRadios1" value="option1" checked [(ngModel)]="namenaObjekta" [checked]="namenaObjekta == 1">
+          <input type="radio" class="form-check-input" (click)="onNamenaClick1()" name="optionsRadios1" id="optionsRadios1" value="option1" checked [(ngModel)]="namenaObjekta" [checked]="namenaObjekta === 'option1'">
           Stambena zgrada
         </label>
       </div>
@@ -22,11 +22,12 @@
     <div class="col-md-3">
       <div class="form-check" align="center">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" (click)="onNamenaClick2()" name="optionsRadios1" id="optionsRadios2" value="option2" [(ngModel)]="namenaObjekta" [checked]="namenaObjekta == 2">
+          <input type="radio" class="form-check-input" (click)="onNamenaClick2()" name="optionsRadios1" id="optionsRadios2" value="option2" [(ngModel)]="namenaObjekta" [checked]="namenaObjekta === 'option2'">
           Nestambena zgrada i zgrada mešovite namene
         </label>
       </div>
     </div>
+
     <div class="col-md-3">
       <select *ngIf="namena" class="form-control" align="center" [(ngModel)]="selectedNamena">
         <option value="1">Upravne i poslovne zgrade</option>
@@ -56,7 +57,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" [(ngModel)]="tipObjekta" [checked]="tipObjekta == 1" checked>
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" [(ngModel)]="tipObjekta" [checked]="tipObjekta === 'option1'" checked>
         Postojeća zgrada
       </label>
     </div>
@@ -64,7 +65,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" [(ngModel)]="tipObjekta" [checked]="tipObjekta == 2">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" [(ngModel)]="tipObjekta" [checked]="tipObjekta === 'option2'">
         Nova zgrada
       </label>
     </div>
@@ -83,7 +84,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="option1" checked [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta == 1">
+        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios1" value="option1" checked [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta === 'option1'">
         Sa jednim stanom
       </label>
     </div>
@@ -91,7 +92,7 @@
   <div class="col-md-3">
     <div class="form-check" align="center">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios2" value="option2" [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta == 2">
+        <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios2" value="option2" [(ngModel)]="vrstaObjekta" [checked]="vrstaObjekta === 'option2'">
         Sa više stanova
       </label>
     </div>
@@ -135,7 +136,7 @@
 Ukupna potrosnja objekta iznosi: {{proizvod}} kWh <br>
 Specificna potrosnja iznosi: {{specPotrosnja | number : '1.0-0'}} kWh/m2*a
 Klasa objekta je: {{klasaString}}
-
+Vrsta objekta je : {{vrstaObjekta}}
 
 <div class="row">
   <div class="col-md-2">
